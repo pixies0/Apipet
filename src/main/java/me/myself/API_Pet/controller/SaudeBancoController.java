@@ -1,4 +1,4 @@
-package me.myself.API_Pet.Controller;
+package me.myself.API_Pet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

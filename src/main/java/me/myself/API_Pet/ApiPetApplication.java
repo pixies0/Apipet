@@ -3,7 +3,7 @@ package me.myself.API_Pet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "me.myself.API_Pet.Controller")
+@SpringBootApplication(scanBasePackages = "me.myself.API_Pet")
 public class ApiPetApplication {
 
 	public static void main(String[] args) {
