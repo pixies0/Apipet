@@ -25,6 +25,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+
     @GetMapping("/me")
     public ResponseEntity<Usuario> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

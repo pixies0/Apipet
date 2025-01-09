@@ -23,7 +23,7 @@ public class Pessoa {
     private Sexo sexo;
 
     @OneToOne
-    @JoinColumn(name = "usuario_id", unique = true)
+    @JoinColumn(name = "usuario_id", nullable = false) // Garantindo que o ID de usuário é obrigatório
     private Usuario usuario;
 
     // Getters e Setters

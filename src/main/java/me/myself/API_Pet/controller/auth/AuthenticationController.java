@@ -16,6 +16,8 @@ import me.myself.API_Pet.service.auth.JwtService;
 @RequestMapping("/auth")
 @RestController
 public class AuthenticationController {
+
+
     private final JwtService jwtService;
 
     private final AuthenticationService authenticationService;
