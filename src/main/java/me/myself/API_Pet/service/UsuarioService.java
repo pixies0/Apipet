@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import me.myself.API_Pet.model.Usuario;
 import me.myself.API_Pet.repository.UsuarioRepository;
 
+
 @Service
 public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
 
     public Usuario salvar(Usuario usuario) {
         return usuarioRepository.save(usuario);
@@ -30,4 +32,5 @@ public class UsuarioService {
     public void deletar(Long id) {
         usuarioRepository.deleteById(id);
     }
+
 }
