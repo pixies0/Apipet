@@ -9,11 +9,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +31,10 @@ public class Usuario implements UserDetails{
 
     @Column(nullable = false)
     private String senha;
+
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Pessoa pessoa;
+
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -63,6 +69,14 @@ public class Usuario implements UserDetails{
         // Exemplo:
         // return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         return List.of(); // Por enquanto, sem roles definidas.
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

@@ -8,4 +8,5 @@ import me.myself.API_Pet.model.Agendamento;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {
     List<Agendamento> findByPetId(Long petId);
+    void deleteByPetId(Long petId);
 }
