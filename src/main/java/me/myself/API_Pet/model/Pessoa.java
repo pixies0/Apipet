@@ -22,7 +22,7 @@ public class Pessoa {
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "usuario_id", nullable = false) // Garantindo que o ID de usuário é obrigatório
     private Usuario usuario;
 

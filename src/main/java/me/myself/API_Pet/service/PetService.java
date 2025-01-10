@@ -30,4 +30,5 @@ public class PetService {
     public void deletar(Long id) {
         petRepository.deleteById(id);
     }
+
 }

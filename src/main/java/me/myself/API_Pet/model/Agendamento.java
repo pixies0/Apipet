@@ -1,11 +1,19 @@
 package me.myself.API_Pet.model;
 
-import jakarta.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "agendamentos")
@@ -21,6 +29,10 @@ public class Agendamento implements Serializable {
     @ManyToOne
     @JoinColumn(name = "servico_id", nullable = false)
     private Servico servico;
+
+    @ManyToOne
+    @JoinColumn(name = "pet_id", nullable = false)
+    private Pet pet;
 
     @Column(nullable = false, length = 50)
     private String status = "PENDENTE";
@@ -49,6 +61,15 @@ public class Agendamento implements Serializable {
     public void setUsuarioId(Long usuarioId) {
         this.usuarioId = usuarioId;
     }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
 
     public Servico getServico() {
         return servico;

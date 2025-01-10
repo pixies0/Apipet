@@ -1,6 +1,19 @@
 package me.myself.API_Pet.model;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Pet")
@@ -24,6 +37,9 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "pessoa_id", nullable = false)
     private Pessoa pessoa;
+
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<Agendamento> agendamentos;
 
     // Getters e Setters
     public Long getId() {
@@ -72,6 +88,14 @@ public class Pet {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void setAgendamentos(List<Agendamento> agendamentos) {
+        this.agendamentos = agendamentos;
     }
 
     public enum Sexo {

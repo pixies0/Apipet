@@ -2,17 +2,17 @@ package me.myself.API_Pet.controller.auth;
 
 import java.util.List;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import me.myself.API_Pet.model.Usuario;
 import me.myself.API_Pet.service.UsuarioService;
@@ -41,11 +41,6 @@ public class UsuarioController {
         return ResponseEntity.ok(users);
     }
 
-    // @GetMapping
-    // public List<Usuario> listarUsuarios() {
-    //     return usuarioService.listarTodos();
-    // }
-
     @GetMapping("/{id}")
     public Usuario buscarPorId(@PathVariable Long id) {
         return usuarioService.buscarPorId(id)
@@ -58,7 +53,9 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarUsuario(@PathVariable Long id) {
-        usuarioService.deletar(id);
+    public ResponseEntity<String> deletarUsuario(@PathVariable Long id) {
+        usuarioService.deletarUsuario(id);
+        return ResponseEntity.ok("Usuário com ID " + id + " e seus dados associados foram removidos com sucesso.");
     }
+
 }
